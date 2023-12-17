@@ -18,12 +18,16 @@ public class WriteToFile {
         else System.out.println("Запись с существующий файл");
     }
     public void recording(PersonalData personalData){
-        try (FileWriter fileWriter = new FileWriter(file);){
-            fileWriter.write(String.valueOf(personalData.getFio()) + " ");
-
+        try (FileWriter fileWriter = new FileWriter(file, true);){
+            StringBuilder fio = new StringBuilder();
+            for (String el:personalData.getFio()) {
+                fio.append(el);
+                fio.append(" ");
+            }
+            fileWriter.write(String.valueOf(fio.toString()));
             fileWriter.write(personalData.getDate()+ " ");
             fileWriter.write(String.valueOf(personalData.getNumber())+ " ");
-            fileWriter.write(personalData.getGender()+ " ");
+            fileWriter.write(personalData.getGender()+ " \n");
         } catch (IOException e) {throw new RuntimeException(e);}
 
     }

@@ -12,6 +12,6 @@ public class Main {
         System.out.println(personalData.getNumber());
 
         WriteToFile writeToFile = new WriteToFile(personalData.getFio().get(0));
-
+        writeToFile.recording(personalData);
     }
 }
